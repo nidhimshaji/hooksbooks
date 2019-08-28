@@ -1,2 +1,0 @@
-# hooksbooks
-Created with CodeSandbox
