@@ -2,32 +2,34 @@ import React, { useState, useContext } from "react";
 import { BookContext } from "../contexts/BookContextProvider";
 
 const BookForm = () => {
-  const [input, setInput] = useState("");
-  const { books, addBooks, removeBooks } = useContext(BookContext);
-  const handleChange = e => {
-    console.log(e.target.name, e.target.value);
-    setInput(e.target.value);
-  };
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
 
+  const { addBooks } = useContext(BookContext);
+  const handleSubmit = e => {
+    e.preventDefault();
+    addBooks(author, title);
+    setTitle("");
+    setAuthor("");
+  };
   return (
-    <form onSubmit={addBooks}>
+    <form onSubmit={handleSubmit}>
       <h1> Add Books</h1>
       <label>Title</label>
       <input
         type="text"
-        value={input}
+        value={title}
         name="title"
-        onChange={() => handleChange}
+        onChange={e => setTitle(e.target.value)}
       />
       <label>Author</label>
       <input
         type="text"
-        value={input}
+        value={author}
         name="author"
-        onChange={() => handleChange}
+        onChange={e => setAuthor(e.target.value)}
       />
       <button> Add Book </button>
-      <button onClick={removeBooks}>Remove Button</button>
     </form>
   );
 };

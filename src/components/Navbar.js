@@ -3,7 +3,6 @@ import { BookContext } from "../contexts/BookContextProvider";
 
 const Navbar = () => {
   const { books } = useContext(BookContext);
-  console.log(books);
   return (
     <div>
       <h1> Reading List</h1>

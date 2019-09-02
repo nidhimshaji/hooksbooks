@@ -1,16 +1,20 @@
-import React, { useContext } from 'react';
-import { BookContext } from '../contexts/BookContextProvider';
+import React, { useContext } from "react";
+import { BookContext } from "../contexts/BookContextProvider";
+import BookDetails from "./BookDetails";
 
 const BookList = () => {
-  const { books } = useContext(BookContext);
-
-  return(
-    books.length?(
-      { books.map(book=>{
-        return(
-        <BookDetails books={book} key={book.id} />
-        )
+  const { books, removeBooks } = useContext(BookContext);
+  return books.length ? (
+    <ul>
+      {books.map(book => {
+        return (
+          <BookDetails book={book} key={book.id} removeBooks={removeBooks} />
+        );
       })}
-    ) : (<p> There are no books</p>)
-  )
-}
+    </ul>
+  ) : (
+    <p> There are no books</p>
+  );
+};
+
+export default BookList;
