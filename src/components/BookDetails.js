@@ -1,9 +1,9 @@
 import React from "react";
 
-const BookDetails = ({ book, removeBooks }) => {
+const BookDetails = ({ book, dispatch }) => {
   return (
     <div>
-      <li onClick={() => removeBooks(book.id)}>
+      <li onClick={() => dispatch({ type: "REMOVE_BOOK", id: book.id })}>
         {book.title} {book.author}
       </li>
     </div>

@@ -5,10 +5,16 @@ const BookForm = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
 
-  const { addBooks } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
   const handleSubmit = e => {
     e.preventDefault();
-    addBooks(author, title);
+    dispatch({
+      type: "ADD_BOOK",
+      book: {
+        title,
+        author
+      }
+    });
     setTitle("");
     setAuthor("");
   };
